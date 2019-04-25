@@ -12,8 +12,20 @@
       background: #dedede;
       display: flex;
       align-items: center;
+      justify-content: content;
+      flex-wrap: wrap;
       height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
+    }
+    header{
+      width: 100vw;
+      text-align: center;
+      font-size: 2.5em;
+      color: rgba(0, 0, 0, 0.5)
+    }
+    header h1,h2,h3,h4,h5,h6{
+      padding: 0;
+      margin:0;
     }
     .gameboard {
       height: 100vh;
@@ -66,7 +78,7 @@
       color: #2c3e50;
       font-size: 2.5rem;
       position: absolute;
-      top: calc(50% - 50px);
+      top: calc(50% + 20px);
       left: calc(50% - 200px);
     }
     .hide {
@@ -74,13 +86,17 @@
     }
   </style>
 <body>
-    <div class="gameboard">
-      <div id="celeste" class="color celeste left" data-color="celeste"></div>
-      <div id="violeta" class="color violeta right" data-color="violeta"></div>
-      <div id="naranja" class="color naranja left" data-color="naranja"></div>
-      <div id="verde" class="color verde right" data-color="verde"></div>
-      <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
-    </div>
+      <header>
+        <h1>SIMON SAYS</h1>
+        <h5>Nivel: <span id="nivel-span">1</span> </h5>
+      </header>
+      <div class="gameboard">
+        <div id="celeste" class="color celeste left" data-color="celeste"></div>
+        <div id="violeta" class="color violeta right" data-color="violeta"></div>
+        <div id="naranja" class="color naranja left" data-color="naranja"></div>
+        <div id="verde" class="color verde right" data-color="verde"></div>
+        <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
+      </div>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="game.js"></script>
     

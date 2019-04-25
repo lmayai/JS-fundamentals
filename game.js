@@ -3,9 +3,12 @@ const celeste = document.getElementById('celeste')
 const violeta = document.getElementById('violeta')
 const naranja = document.getElementById('naranja')
 const verde = document.getElementById('verde')
-const ULTIMO_NIVEL = 10
+const nivelSpan = document.getElementById('nivel-span')
+
+const ULTIMO_NIVEL = 3
 class Juego {
     constructor(){
+        this.nivel = 1
         this.inicializar()
         this.generarSecuencia()
         setTimeout(()=>{
@@ -21,6 +24,7 @@ class Juego {
         this.siguienteNivel = this.siguienteNivel.bind(this) //Evitar que cambie el contexto de this
         this.toogleBtnEmpezar()
         this.nivel = 1
+        this.mostrarNivel()
         this.colores = {
             celeste: celeste,
             // Tambien se puede hacer lo siguiente cuando se asgian al objeto del mismo nombre
@@ -28,6 +32,10 @@ class Juego {
             naranja,
             verde
         }
+    }
+
+    mostrarNivel(){
+        nivelSpan.textContent = this.nivel;
     }
 
     toogleBtnEmpezar(){
@@ -146,6 +154,7 @@ class Juego {
                     //Tambien así, perdo cambia el this. por tal tocxa ponerlo con el bindthis
                     setTimeout( this.siguienteNivel, 1500) 
                     console.log('Avanza nivel' ,this.nivel)
+                    this.mostrarNivel()
                 }
             } 
         } else{ //Si toco un número que no era
@@ -153,6 +162,7 @@ class Juego {
             console.log(`Pierde en nivel ${this.nivel}`)
             this.perdio()
         }
+        
     }
 
     gano(){
