@@ -244,7 +244,7 @@ function imprimirNombreEnMayusculas2(nombre){
     console.log('Local: '+nombre);
 }
 console.log(nombre);                //Jaimito
-imprimirNombreEnMayusculas2(nombre) //Local: JAIMITO
+imprimirNombreEnMayusculas2(nombre); //Local: JAIMITO
 console.log(nombre);                //Jaimito
 ```
 
@@ -254,6 +254,136 @@ window.nombre
 ```
 - Una variable definida con **var** es de alcance global si no se define dentro de una función
 
+
+## Objetos
+Los objetos se pueden definir como una representación abstracta de la realidad, los cuales sirven para agregar información. El objeto contiene un conjunto de propiedades que se codifican con una llave y un valor.
+```js
+var persona = {
+    nombre: 'Jaimito',
+    apellido: 'Aguirre',
+    edad: 25
+}   
+```
+Lo anterior significa que el objeto lo estamos creando y luego guardando en la variable persona. Las propiedas del objeto son el nombre, el apellido y la edad.
+Las propiedades y su valor puede ser cualquier tipo de dato: numeros, cadenas, arreglos, funciones, booleanos e incluso objetos.
+
+Para acceder a las propiedades del objeto se usa el **.**
+```js
+function imprimirNombre(persona){
+    console.log('Nombre: '+ persona.nombre);
+}
+imprimirNombre(persona);
+```
+
+- Para la nueva version de ES, es posible definir el parámetro a recibir en la declaración de la función.
+- Ahora se puede agregar llaves y dentro la clave que se quiere dentro del objeto:
+```js
+function imprimirNombre({nombre}){
+    console.log('Nombre: '+ nombre);
+}
+imprimirNombre(persona);
+```
+
+- También es posible en el momento de llamar a una función, definir el metodo así:
+```js
+imprimirNombre({nombre:'Jaimito'});
+```
+
+- Los siguientes generan errores en la consola ya que no existe la propiedad nombre
+```js
+imprimirNombre(); 
+imprimirNombre({}); 
+imprimirNombre({apellido:'Perez'});
+```
+
+- Un ejemplo de un objeto mucho más extenso es el siguiente, en el cuál hay mas de un tipo de datos. 
+- Los primeros cuatro son elementos de datos, se denominan **propiedades**
+- Los últimos elementos se denominan **métodos** del objeto
+```js
+var persona = {
+    nombre: ['Bob', 'Smith'],
+    edad: 32,
+    genero: 'masculino',
+    intereses: ['música', 'esquí'],
+    bio: function () {
+        alert(this.nombre[0] + '' + this.nombre[1] + ' tiene ' + this.edad + ' años. Le gusta ' + this.intereses[0] + ' y ' + this.intereses[1] + '.');
+    },
+    saludo: function() {
+        alert('Hola, Soy '+ this.nombre[0] + '. ');
+    }
+};
+```
+Para acceder a estos sería asi:
+```js
+persona.nombre
+persona.nombre[0]
+persona.edad
+persona.intereses[1]
+persona.bio()
+persona.saludo()
+```
+
+También es posible acceder usando la notación de corchetes. Definiendo un objeto, también conocidos como JSON(JavaScript Object Notation)
+```js
+var abuelo = {
+    nombre:'Alberto',
+    hijos:[
+        {
+            nombre:'Hernan',
+            hijos:[
+                {
+                    nombre :'Juan'
+                }
+            ]
+        },
+        {
+            nombre:{
+                pila:'Pedro',
+                apellido:'Velez'
+            }
+        }
+    ]
+}
+
+//Nombre abuelo
+abuelo.nombre
+abuelo['nombre']
+
+//Nombre hijo Hernán
+abuelo.hijos[0].nombre
+abuelo.hijos[0]['nombre']
+
+//Nombre del hijo de Hernan
+abuelo.hijos[0].hijos[0].nombre
+abuelo.hijos[0].hijos[0]['nombre']
+
+// Nombre Pedro
+abuelo.hijos[1].nombre.pila
+abuelo.hijos[1]['nombre']['pila']
+```
+
+## Desestructuración en JS
+La desestructuración en JS permite obtener un valor especifico de un JSON desde su declaración. Tomando el objeto **abuelo** de la sección anterior se tiene:
+Lo anterior significa que dentro del objeto *abuelo*, se buscará una propiedad *nombre* y se asignará a la variable *nombreAbuelo*.
+```js
+var {nombre:nombreAbuelo} = abuelo //nombreAbuelo = Alberto
+```
+- Es posible acceder a valores de niveles inferiores desestructurando así:
+```js
+var {   
+        hijos:[
+            {},
+            {
+                nombre:{
+                    pila: nombreHijo2
+                }
+            }
+        ]
+    } = abuelo //nombreHijo2 = Pedro
+```
+```js```
+```js```
+```js```
 ```js```
 ```js```
 ```js```
