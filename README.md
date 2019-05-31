@@ -479,5 +479,65 @@ String:  // "esto es una string"```
 */
 ```
 
+## Condicionales
+Las estructuras de control permiten decidir entre la ejecución de un código o no. La condicionales se evaluan del siguiente modo:
+```js
+persona = {
+    nombre:'Juan',
+    esIngeniero:true
+}
+// . . . 
+if (persona.esIngeniero) {
+    console.log(`-Ingenierio`);
+}else{
+    console.log(`-No es Ingenierio`);
+}
+```
+Para comparar enteres se hace lo siguiente
+```js
+if (persona.edad >= 18){
+    console.log('Es mayor de edad, tiene ',persona.edad)
+}else{
+    console.log('No es mayor de edad, tiene ',persona.edad)
+}
+```
+
+## Funciones que retornan
+Las funciones además de ejecutar código pueden retornar algo. A continuación, la función evalua si una persona es mayor de edad, y retorna un literal booleano(true o false)
+```js
+const MAYORIA_DE_EDAD = 18; 
+function esMayorDeEdad(persona){
+    return persona.edad >= MAYORIA_DE_EDAD;
+}
+esMayorDeEdad({edad:20})// retorna TRUE
+esMayorDeEdad({edad:15})// retorna FALSE
+```
+
+## Arrow functions - Funciones flecha
+A las constantes tambipen se le pueden asignar funciones
+```js
+const esMayorDeEdad = function (persona){
+    return persona.edad >= MAYORIA_DE_EDAD;
+}
+```
+Usando una arrow-function también permite codificarse así:
+```js
+const esMayorDeEdad = (persona) => {
+    return persona.edad >= MAYORIA_DE_EDAD;
+}
+```
+Si la función solo retorna y no ejecuta muchas sentencias, se puede omiti las llaves y el return. Quedaría así:
+```js
+const esMayorDeEdad = persona => persona.edad >= MAYORIA_DE_EDAD;
+```
+Si se desestructura, quedaría así:
+```js
+const esMayorDeEdad = ({edad}) => edad >= MAYORIA_DE_EDAD;
+```
+Ahora a la constante se le asignó una función, por tal para llamar a la función sería así
+```js
+persona = {edad:15}
+esMayorDeEdad1(persona) //FALSE
+```
 ```js```
 ```js```
