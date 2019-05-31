@@ -41,7 +41,7 @@ var otraPersona2 = {
     ...sacha //Se desglosa
 }
 //Pero sigue dando diferente por que es un nuevo objeto
-console.log('sacha==otraPersona2 ',sacha==otraPersona2);  //TRUE, ya que son el mismo obj en la RAM
+console.log('sacha==otraPersona2 ',sacha==otraPersona2);  //FALSE, ya que son otros obj en la RAM
 // Es otro lugar de memoria, por eso es falso
 
 /** PEROOO, si ahora se modifica el nombre dentro de otro

@@ -381,10 +381,103 @@ var {
         ]
     } = abuelo //nombreHijo2 = Pedro
 ```
-```js```
-```js```
-```js```
-```js```
-```js```
+
+## Parámetros como referencia (Paso por referencia o por valor)
+Si imaginamos una función a la cuál se le está pasando un objeto *persona*, cada vez que se llame a esta la propiedad *edad* se irá aumentando. 
+```js
+var jaimito = {
+    nombre: 'Jaimito',
+    edad: 25
+}  
+function cumple(persona){
+    persona.edad += 1;
+}
+cumple(jaimito) // edad:26
+cumple(jaimito) // edad:27
+```
+* Eso significa que los objetos que se pasen a una función, y luego se le modifiquen sus propiedades, se verá reflejado por fuera de la función. 
+
+- Para evitar modificaciones en las propiedades de los objetos, se retorna un nuevo objeto con las propiedades cambiadas.
+```js
+function cumple(persona){
+    return {
+        ...persona,
+        edad: persona.edad + 1,
+        nombre: 'JaimitoViejo'
+    }
+}
+var jaimitoMasViejo = cumple(jaimito)
+console.log(jaimito)            //{nombre: "Jaimito", edad: 25}
+console.log(jaimitoMasViejo)    //{nombre: "JaimitoViejo", edad: 26}
+```
+El uso de **...persona** permite hacer una *copia* del mismo objeto y luego retornar la propiedad modificada.
+- El operador de 3 puntos es llamado **Operador de Propagación - Spread operator**: este operador hace una concatenación entre un objeto vacio y el objeto siguiente a los 3 puntos, por tal parece una clonación de un objeto.
+
+## Comparaciones
+Las comparaciones se usan para verificar que dos datos cumplen o no ciertas características. 
+
+#### Comparación igualdad con == o ====
+```js
+var x = 4;
+var y = '4';
+```
+Al comparar *x* y *y* se tiene los siguiente:
+- == Compara el valor
+- === Compara el valor y el tipo de dato
+```js
+(x == y)   //Retorna TRUE, ya que tienen el mismo valor
+(x === y)  //Retorna FALSE, ya que tienen el mismo valor, pero no son el mismo tipo de dato
+```
+- Comparación con objetos:
+Los objetos no son datos primitivos, por tal al compararlos, se compara su referencia en memoria. Sea con == o === es falso ya que su referencia es diferente.
+```js
+var persona1 = {nombre:'juan'};
+var persona2 = {nombre:'juan'};
+
+(persona1 == persona2) //retorna FALSE
+(persona1 === persona2) //retorna FALSE
+```
+La comparación daría TRUE si a un objeto se le pasa su referencia, ya que son el mismo objeto en memoria.
+```js
+var otraPersona = persona1;
+(persona1 == otraPersona)  //TRUE
+(persona1 === otraPersona) //TRUE
+```
+Si se desglosa el objeto, con base a otro, esto genera un nuevo objeto en otra referencia en memoria. Como son dos objetos diferentes es falso.
+```js
+var otraPersona2 {...persona1}
+(persona1 == otraPersona2) //FALSE
+```
+- Si ahora se tiene un objeto y se crea otro objeto con base a este:
+```js
+
+```
+AL modificar cualquiera de estos dos objetos, se modificaría el otro, ya que ambos apuntan a la misma referencia en memoria. Por tal no es recomendable hacer esto para objetos, ni tampoco para datos no primitivos como array y funciones.
+```js
+var p1 = {nombre:'juan'};
+var p2 = p1;
+p1.nombre = 'pedro'
+console.log(p1) //{nombre:'pedro'}
+console.log(p2) //{nombre:'pedro'}
+```
+PEro si ahora se crea el objeto clonado y se modifica el original, no se modifica el clonado ya que es otra referencia en memoria.
+```js
+var p1 = {nombre:'juan'};
+var p2 = {...p1}
+p1.nombre = 'pedro'
+console.log(p1) //{nombre:'pedro'}
+console.log(p2) //{nombre:'juan'}
+```
+- ALgunos datos son:
+```js
+/*
+Boolean:  // false/true
+Null:  // nulo o "vacío"
+Undefined: // Cuando una variable es declarada pero aún no tiene un valor asignado 
+Number: // 383839
+String:  // "esto es una string"```
+*/
+```
+
 ```js```
 ```js```
