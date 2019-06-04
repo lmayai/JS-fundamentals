@@ -539,5 +539,249 @@ Ahora a la constante se le asignó una función, por tal para llamar a la funci�
 persona = {edad:15}
 esMayorDeEdad1(persona) //FALSE
 ```
+
+## Ciclo For
+Los ciclos permiten la ejecución de tareas repetitivas cierto número de veces.
+- Por ejemplo: si se quisiera cambiar el peso de una persona por 365 días, donde aumentará mas que reducir :
+```js
+for (var i = 1; i<=365 ; i++){
+    var pesoRan = Math.random()
+    if (pesoRan<0.25){      
+        aumentarPeso(juan)
+    }else if (pesoRan < 0.5){
+        quitarPeso(juan)
+    }
+}
+```
+En el ejemplo anterior, el ciclo se recorre 365 veces. El método random() obtiene un valor entre 0 y 1 y decide si aumentar o reducir el peso.
+
+## While
+El ciclo while permite ejecutar un código repetidas veces hasta que se cumpla una condición.
+- Si se quiere que juan haga ejercicio hasta que cumpla la meta de bajar su peso 3 kg, él debería hacer ejercicio por algunos días para lograr el objetivo.
+```js
+const META = juan.peso-3
+while(juan.peso>=META){
+    quitarPeso(juan)
+    dias += 1;
+    debugger
+}
+console.log('Te demoraste, ',dias,' días en bajar 3 kilos')
+```
+Para hacer depuración se usa la palabra **debugger**, luego en el navegador se abre el inspector y se ejecuta el código. El código se detendrá en el break point colocado.
+
+## Do- while
+Es similar al while, con la excepción que este se ejecuta al menos 1 sola vez.
+- Ejm: SI una persona va a verificar si está lloviendo, contará las veces que ha ido a ver. Cuando deja de llover, deja de ir.
+```js
+const llueve = () => Math.random()<0.25
+
+do{
+    contador++;
+}while(!llueve());
+
+console.log(`Veces que fui a ver si llovia: ${contador}`)
+```
+
+## Switch
+Es una esctructura de control que permite definir las condiciones con *case*
+```js
+var signo = prompt('Cual es tu día de la semana favorito?')
+switch (signo) {
+    case 'Lunes':
+        console.log('Lunes')
+        break;
+    case 'Martes':
+        console.log('Martes')
+        break;
+    case 'Miércoles':
+    case 'Miercoles':
+        console.log('Miércoles')
+        break; 
+    case 'Jueves':
+        console.log('Jueves')
+        break;
+    case 'Viernes':
+        console.log('Viernes')
+        break; 
+    default:
+        console.log('Fin de semana')
+        break;
+}
+```
+En el código anterior se usa prompt() para obtener mensajes desde el teclado.
+- También es posible definir dos posibles condiciones; si no se usa break, se toma el siguiente posible caso. En el siguiente código toma el *miércoles* con o sin tilde.
+```js
+case 'Miércoles':
+case 'Miercoles':
+    console.log('Miércoles')
+    break; 
+```
+
+## Arrays
+Los arreglos son una colección ordenada de datos (primitivos u objetos) los cuales se usan para agrupar información con diferentes valores posibles.
+- Por ejemplo si tenemos varios objetos personas, es posible agrupar todos estos en uno.
+```js
+var juan = {nombre:"Juan",altura:1.8}
+var santi = {nombre:"Santi",altura:1.7}
+var pedro = {nombre:"Pedro",altura:1.6}
+var sebas = {nombre:"Sebas",altura:1.5}
+
+var personas = [juan,santi,pedro,sebas]
+```
+Para agruparlos valores, se usan los *corchetes*
+
+- Para acceder a uno de los elementos se debe buscar la posición del elemento. Como esté arreglo tiene 4 elementos, los elementos son desde la posicion 0 a la 3.
+```js
+console.log(personas[0])  //juan
+console.log(personas[1])  //santi
+console.log(personas[2])  //pedro
+console.log(personas[3])  //sebas
+```
+Para acceder a una propiedad de un objeto del array, se sigue usando el **punto**
+```js
+personas[0].nombre     //"Juan"
+personas[0]['nombre']  //"Juan"
+```
+- Para recorrer un array se usa un ciclo for así:
+```js
+for(var i = 0; i<personas.length; i++) {
+    console.log( `${personas[i].nombre} mide ${personas[i]['altura']} metros`)
+}
+```
+- También es posible usar **foreach**
+```js
+personas.forEach( (item,index,array)=>{
+    console.log( `${item.nombre} mide ${array[index]['altura']} metros`)
+})
+```
+Se puede observar que es posible acceder por el item, o tambien con el array y su index
+- Para agregar un elemento al array se usa *push*
+```js
+var frutas = ['manzana', 'banano'];
+frutas.push('pera') //["manzana", "banano", "pera"]
+```
+
+- Para remover el último elemento se usa *pop*
+```js
+frutas.pop() // ["manzana", "banano"]
+```
+
+- Para remover el primer elemento se usa *shift*
+```js
+frutas.shift() //["banano"]
+```
+
+- Para agregar un elemento al inicio se usa *unshift*
+```js
+frutas.unshift('papaya') //["papaya", "banano"]
+```
+
+- Para encontrar el índice de un elemento se usa *indexOf*:
+```js
+frutas.indexOf('banano') //1
+```
+
+- Para eliminar un elemento en particular con su índice se usa *splice*
+```js
+pos = 1
+cantidad = 1
+frutas.splice(pos,cantidad) //["papaya"], se eliminó "banano"
+```
+
+- Para copiar un arreglo se usa *slice*
+```js
+var copiaFrutas = frutas.slice() //["papaya"]
+// copiaFrutas != frutas, ya que tienen diferentes posiciones de memoria
+```
+
+#### Filtros
+Los filtros permiten retornar un nuevo objeto que cumpla con una condición establecida. La condición se declara en la función pasada como callback.
+- Tomando el arreglo personas y creando la función esAlta(), se tiene lo siguiente:
+```js
+var juan = {nombre:"Juan",altura:1.8}
+var santi = {nombre:"Santi",altura:1.7}
+var pedro = {nombre:"Pedro",altura:1.6}
+var sebas = {nombre:"Sebas",altura:1.85}
+
+var personas = [juan,santi,pedro,sebas]
+
+// Arrow function
+var esAlta = (persona) => persona.altura>=1.8;
+```
+Se filtraran los objetos que cumplan la condición dada en la función esAlta():
+```js
+var personasAltas = personas.filter(esAlta)
+console.log(personasAltas) // [ {objeto juan} , {obejto sebas}]
+```
+En la constante *personaAltas* ahora se almacena un arreglo que contiene lo filtrado, es decir, las persona altas
+- Es posible escribir directamente la función así sin declarar una función, usando una función anónima:
+```js
+var personasBajas = personas.filter( (personas) => {
+	return personas.altura<1.8
+})
+console.log(personasBajas) // [ {objeto santi} , {obejto pedro}]
+```
+- En una sintexis más reducida sería así:
+```js
+var personasBajas = personas.filter( ({altura}) => altura<1.8)
+console.log(personasBajas) // [ {objeto santi} , {obejto pedro}]
+```
+
+#### Map
+Con map permite devolver un nuevo arreglo pero con valores modificados.
+```js
+const pasarAlturaACm= (persona) => {
+    persona.altura *= 100 
+    return persona
+}
+var personasEnCm = personas.map(pasarAlturaACm) 
+/*
+    0: {nombre: "Juan", altura: 180}
+    1: {nombre: "Santi", altura: 170}
+    2: {nombre: "Pedro", altura: 160}
+    3: {nombre: "Sebas", altura: 185}
+*/
+```
+Lo anterior tiene un problema, y es que hubo una modificación del arreglo original de personas
+- Para evitar eso debe hacerse una copia del elemento y retornar el cambio del elemento copiado:
+```js
+const pasarAlturaACm= (persona) => {
+    return {
+        ...persona,
+        altura:  persona.altura * 100,
+    }
+}
+```
+Por tal el retorno es la copia de persona con la modificación de la altura
+- Otra manera de escribir lo anterior es sin el return y con el retorno entre paréntesis. Esto significa que lo que se retorna es un único objeto con la modificación.
+```js
+const pasarAlturaACm = (persona) => ({
+    ...persona,
+    altura:  persona.altura * 100,
+})
+```
+#### Reduce
+Reduce lo que hace es reducir el array a un único valor. Por ejemplo si se quisiera sumar las alturas de todas las personas, con map se haría así:
+```js
+var totaAlturas = personas.reduce( funcion() , valorInicialAcumulador )
+```
+Donde el acumulador por defecto es cero y la función tendrá la cumulación así:
+```js
+var totaAlturas = personas.reduce( (acum,persona)=>{ 
+    return acum + persona.altura
+},0)
+```
+Resumido seria así
+```js
+var totaAlturas = personas.reduce( (acum,persona)=> acum + persona.altura , 0)
+```
+
+## Prototipos
+
+
+```js```
+```js```
+```js```
+```js```
 ```js```
 ```js```
