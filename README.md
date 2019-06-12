@@ -449,9 +449,7 @@ var otraPersona2 {...persona1}
 (persona1 == otraPersona2) //FALSE
 ```
 - Si ahora se tiene un objeto y se crea otro objeto con base a este:
-```js
 
-```
 AL modificar cualquiera de estos dos objetos, se modificaría el otro, ya que ambos apuntan a la misma referencia en memoria. Por tal no es recomendable hacer esto para objetos, ni tampoco para datos no primitivos como array y funciones.
 ```js
 var p1 = {nombre:'juan'};
@@ -460,7 +458,7 @@ p1.nombre = 'pedro'
 console.log(p1) //{nombre:'pedro'}
 console.log(p2) //{nombre:'pedro'}
 ```
-PEro si ahora se crea el objeto clonado y se modifica el original, no se modifica el clonado ya que es otra referencia en memoria.
+Pero si ahora se crea el objeto clonado y se modifica el original, no se modifica el clonado ya que es otra referencia en memoria.
 ```js
 var p1 = {nombre:'juan'};
 var p2 = {...p1}
@@ -468,7 +466,7 @@ p1.nombre = 'pedro'
 console.log(p1) //{nombre:'pedro'}
 console.log(p2) //{nombre:'juan'}
 ```
-- ALgunos datos son:
+- Algunos datos son:
 ```js
 /*
 Boolean:  // false/true
@@ -569,7 +567,7 @@ console.log('Te demoraste, ',dias,' días en bajar 3 kilos')
 ```
 Para hacer depuración se usa la palabra **debugger**, luego en el navegador se abre el inspector y se ejecuta el código. El código se detendrá en el break point colocado.
 
-## Do- while
+## Do - while
 Es similar al while, con la excepción que este se ejecuta al menos 1 sola vez.
 - Ejm: SI una persona va a verificar si está lloviendo, contará las veces que ha ido a ver. Cuando deja de llover, deja de ir.
 ```js
@@ -694,7 +692,7 @@ var copiaFrutas = frutas.slice() //["papaya"]
 // copiaFrutas != frutas, ya que tienen diferentes posiciones de memoria
 ```
 
-#### Filtros
+### Filtros
 Los filtros permiten retornar un nuevo objeto que cumpla con una condición establecida. La condición se declara en la función pasada como callback.
 - Tomando el arreglo personas y creando la función esAlta(), se tiene lo siguiente:
 ```js
@@ -727,7 +725,7 @@ var personasBajas = personas.filter( ({altura}) => altura<1.8)
 console.log(personasBajas) // [ {objeto santi} , {obejto pedro}]
 ```
 
-#### Map
+### Map
 Con map permite devolver un nuevo arreglo pero con valores modificados.
 ```js
 const pasarAlturaACm= (persona) => {
@@ -760,7 +758,7 @@ const pasarAlturaACm = (persona) => ({
     altura:  persona.altura * 100,
 })
 ```
-#### Reduce
+### Reduce
 Reduce lo que hace es reducir el array a un único valor. Por ejemplo si se quisiera sumar las alturas de todas las personas, con map se haría así:
 ```js
 var totaAlturas = personas.reduce( funcion() , valorInicialAcumulador )
@@ -823,7 +821,7 @@ persona1.saludar() //Hola, me llamo Juan Gomez
 ```js
 persona1.saludar = function(){console.log(`Hi, my name is ${this.nombre}`)}
 ```
-EL objeto tendría un método llamado *saludar*. También ese método hace parte de su prototipo, donde hace otra cosa.
+El objeto tendría un método llamado *saludar*. También ese método hace parte de su prototipo, donde hace otra cosa.
 ```js
 // En el inspector
 persona1
@@ -979,7 +977,7 @@ function f(){
 // a --> Function.prototype --> Object.prototype --> null
 ```
 
-#### Uso de create
+### Uso de create
 Con create es posible heredar también, donde se crea un objeto *b* a partir de uno *a*, y luego *b* hereda el prototype de *a* 
 ```js
 var a = {a:1};
@@ -1004,7 +1002,7 @@ var c = Object.create(b);
 9. Siempre es importante pensar en no bloquear el event loop.
 
 
-## Timepos en JS
+## Tiempos en JS
 Cualquier tarea que se delegue por un callback siempre esperará que se ejecuten todas las tareas principales.
 ```js
 console.log('a');
@@ -1148,7 +1146,7 @@ obtenerPersonajes(1)
 ```
 
 ### Promesas en paralelo
-Para controlar promesas en paralelo, se creara un arreglo de promesas y luego se verificará que todas estén resueltas.
+Para controlar promesas en paralelo, se creará un arreglo de promesas y luego se verificará que todas estén resueltas.
 ```js
 var ids = [1,2,3];
 var promesas = id.map( id => obtenerPersonaje(id)); // Arreglo de promesas
@@ -1238,8 +1236,9 @@ En el proceso se llamará la misma función cuantas veces sea necesaria hasta qu
 - El factorial con recursividad
 ```
 4!  = 4 * 3 * 2 * 1 = 24 
-4 * (4-1) van 12 
-3 * (3-1) van 
+4 * (4-1)  van 12 
+12 * (3-1) van 24
+24 * (2-1) Van 24
 ```
 ```js
 function factorial(number){
@@ -1297,7 +1296,7 @@ saludoMexicano('Juan')      // Hola Juan carnal
 ```
 Se observa que el retorno de saludoArgentino es *Hola Sacha che*, Donde se pas+o como parámetro el Sacha, y el internamente ya tenía almacenano el che.
 
-## DAtos inmutables
+## Datos inmutables
 Los datos inmutables son aquellos que no cambian. Las funciones se deben garantizar que no cambien ni tengan efectos de lado, side effects.
 ```js
 // Cambia el original
@@ -1339,6 +1338,4 @@ function saludar(saludo='Hola'){ //Por defecto Hola
 const saludo = saludar2.bind(jessi,'Hola Che');
 saludo(); //"Hola Che! mi nombree es Jessi"
 ```
-```js```
-```js```
 
