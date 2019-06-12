@@ -1311,7 +1311,7 @@ const cumpleInmutable = persona => {
 Con lo anterior se garantiza que el objeto que llegué no será alterado. Los 3 puntos significa que se creara un nuevo objeto basado en el recibido.
 
 ## Contextos
-EL contexto de this puede traer inconvenientes si no se sabe manejar.
+El contexto de this puede traer inconvenientes si no se sabe manejar.
 ```js
 // this: hace referencia a window= el objeto global
 function saludar(){
