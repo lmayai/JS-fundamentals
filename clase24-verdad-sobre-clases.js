@@ -3,14 +3,14 @@
  * no existe un sistema que se herede de otro.
  * Existe la herencia prototipal
  * Crear un prototipo hijo, ejm: desarrollador
- * Si en el hijo no responde metodo, va y busca al padre del objeto,
+ * Si en el hijo no responde al método, va y busca al padre del objeto,
  *  y va subiendo la cadena subiendo entre objetos 
  * padres hasta llegar al prototipo Object
  */
 
 /**
- * Se le dice al prototipo hij quien será su prototipo padre
- * Con sto siguiente se genera la herencia
+ * Se le dice al prototipo hijo quién será su prototipo padre
+ * Con lo siguiente se genera la herencia
  */
 function heredaDe(prototipoHijo,prototipoPadre){
     var fn = function () {} //Dummy funcion
@@ -34,8 +34,8 @@ Persona.prototype.soyAlto = function () {
     return this.altura >=1.8
 }
 
-/** CRear un nuevo tipo de persona, un protio DESARROLLADOR 
- * AHora, como se hace pa que desarollador haga la herencia prototipal
+/** Crear un nuevo tipo de persona, un proto DESARROLLADOR 
+ * Ahora, como se hace pa que desarollador haga la herencia prototipal
  * de saludar y soyAlto, se crea primero una funcion nuestra
  * 
 */
@@ -50,7 +50,7 @@ Desarrollador.prototype.saludar = function (){
     console.log(`Hola soy desarrollador y me llamo ${this.nombre} ${this.apellido}`)
 }
 
-// Se pone encima de los metodos
+// Se pone encima de los métodos
 //heredaDe(Desarrollador,Persona)
 
 /*
@@ -61,13 +61,13 @@ var pedro = new Persona('Pedro','Aguirre',1.8)
 
 /**
  * Si ahora se llama a un objeto creado del prototipo Desarrollador
- * El metodo saludar va al padre, no al hijo
+ * El método saludar va al padre, no al hijo
  * Esto es por que el mecanismo de herencia se llamó luego
- * de definir el pro de saludar del desarrollador
+ * de definir el proto de saludar del desarrollador
  */
 
 /**
- * AL mirar en el inspector Persona.prototype
+ * Al mirar en el inspector Persona.prototype
  * Se muestra un objeto con sus atributor que son
  * saludar: es una funcion
  * soyAlto: es una funcion
@@ -94,7 +94,7 @@ var pedro = new Persona('Pedro','Aguirre',1.8)
         soyAlto: ƒ ()
         constructor: ƒ Persona(nombre,apellido,altura)
         __proto__: Object
- * SI ahora se  llama al objeto de desarrollador
+ * Si ahora se llama al objeto de desarrollador
  * arturo.soyALto, el primero busca en desarrollador y luego busca en su prototipo padre,
  * recorre los padres hasta que lo encuentre
  */
@@ -102,7 +102,7 @@ var pedro = new Persona('Pedro','Aguirre',1.8)
 /**
  * COMO RESUMEN:
  * La herencia no existe, no existen clase, existen prototipos
- * Luego al buscar un atributo se ira buscando entre sus padres 
+ * Luego al buscar un atributo se irá buscando entre sus padres 
  * hasta llegar a object. Si no está en ningun prototipo del cual fue heredado
- * ahi si se lanza un error.
+ * ahí si se lanza un error.
  */

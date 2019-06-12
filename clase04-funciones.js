@@ -12,6 +12,6 @@ function imprimirEdadParam(n,e) {
 imprimirEdad();
 imprimirEdadParam('Pedro',25);
 imprimirEdadParam(nombre,edad);
-imprimirEdadParam(25,'Pedro'); //Tipido débil
-imprimirEdadParam(nombre); //:Juancho tiene undefined, el valor no essta definido, al ser interpreatado, dara un tipo a las variables. UNDEFINED es un tipo de dato
+imprimirEdadParam(25,'Pedro'); //Tipado débil
+imprimirEdadParam(nombre); //:Juancho tiene undefined, el valor no esta definido, al ser interpreatado, dará un tipo a las variables. UNDEFINED es un tipo de dato
 

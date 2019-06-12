@@ -27,9 +27,9 @@ function factorial(numero){
  *  DENTRO de las funciones existe cache. memoria cache
  * Que puede ser creada en el objeto this
  * Donde se van a ir guardando los factoriales
- * Por tal el calculo se hace una primera vez, y si se vuelve a preguntar 
+ * Por tal el cálculo se hace una primera vez, y si se vuelve a preguntar 
  * será retornado.
- * Se observa que la segunda vez del calculo, se hará mucho mas rapido
+ * Se observa que la segunda vez del cálculo, se hará mucho más rapido
  * 
  */
 function factorial2(numero){

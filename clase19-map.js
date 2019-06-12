@@ -1,5 +1,5 @@
 /** 
- * MAP a difernecia de filter devuelve un nuevo array
+ * MAP a diferencia de filter devuelve un nuevo array
  * pero esta vez modificado.
  * En este ejemplo se modificará la altura de metros a cm 
  *
@@ -59,14 +59,14 @@ const pasarAlturaACm= (persona) => {
     return persona
 }
 
-/** Se le pone funcion donde se usará el map */
+/** Se le pone función donde se usará el map */
 var personasEnCm = personas.map(pasarAlturaACm)
 
 /**
- * Ahora el inconveniente es que se modifico el array original personas
+ * Ahora el inconveniente es que se modificó el array original personas
  * Lo que se debe hacer es retornar un nuevo objeto con la altura modificada.
  * Se retorna un objeto nuevo con la persona desglosada.
- * por tal son objetos diferentesm y son objetos en memoria diferentes
+ * por tal son objetos diferentes y son objetos en memoria diferentes
  */
 
 const pasarAlturaACm2= (persona) => {
@@ -77,13 +77,13 @@ const pasarAlturaACm2= (persona) => {
     }
 }
 
-/** Se le pone funcion donde se usará el map */
+/** Se le pone función donde se usará el map */
 var personasEnCm2 = personas2.map(pasarAlturaACm2)
 
 
-/** Tambien es posible devolver el objeto del arrow function 
+/** Tambipén es posible devolver el objeto del arrow function 
  * de forma diferente 
- * Y es retornar entre llaves un objeto, y esas llaves dentro de parentesis
+ * Y es retornar entre llaves un objeto, y esas llaves dentro de paréntesis
 */
 const pasarAlturaACm3= (persona) => ({
     ...persona,

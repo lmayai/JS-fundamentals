@@ -1,5 +1,5 @@
-/** REDUCE_ muy comun
- * Lo que hace es reducir un array a un unico valor!
+/** REDUCE_ muy común
+ * Lo que hace es reducir un array a un único valor!
  */
 
 var martin = {
@@ -50,7 +50,7 @@ var santi = {
 
 var personas = [martin,karen,pedro,juan,santi];
 
-// EJM: Sacar la cuenta total de cuantos libros hay
+// EJM: Sacar la cuenta total de cuántos libros hay
 
 /* Opcion 1: con ciclo for 
 */
@@ -66,7 +66,7 @@ console.log(`La cantidad de libros total es ${acum}`)
  * Opción 2: Usar reduce
  * .reduce(reducer,0 );
  * Se tiene el reducer, y el valor inicial del acumulador que será 0
- * Reducer es una funcion
+ * Reducer es una función
  * const reducer = (acum, cada_elemento)
 */
 

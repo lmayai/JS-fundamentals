@@ -1,8 +1,8 @@
 /** 
- * Repetir un codigo hasta cumplir una condicion 
+ * Repetir un código hasta cumplir una condición 
 */
 
-// Cuantos dias le lleva bajar 3 kilos
+// Cuántos días le lleva bajar 3 kilos?
 
 var juan = {
     nombre: 'Juan',
@@ -20,12 +20,12 @@ const comeMucho = () => Math.random() < 0.3
 const haceDeporte = () => Math.random() < 0.7
 var dias = 0
 
-//Se repite hasta que la condicion se cumpla
+//Se repite hasta que la condición se cumpla
 while(juan.peso>=META){
     //debugger
-    if ( comeMucho() ) { //come mucho aumenta de peso
+    if ( comeMucho() ) { //come mucho, aumenta de peso
         aumentarPeso(juan)
-    }else if( haceDeporte() ){ //Si hace deporte adelgaza
+    }else if( haceDeporte() ){ //Si hace deporte, adelgaza
         quitarPeso(juan)
     } 
     dias += 1;

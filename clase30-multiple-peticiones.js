@@ -1,5 +1,5 @@
 /**
- * Programa que imprima multiples personajes, y que esos request sean en paralelo
+ * Programa que imprima muútiples personajes, y que esos request sean en paralelo
  */
 
 const API_URL = 'https://swapi.co/api/'
@@ -25,7 +25,7 @@ obtenerPersonaje(6)
 
 /** El orden en que llegan es: ALEATORIO 
  * No depende del orden de llamada, debido al asincronismo
- * ya que no es posible saber cuando respondera.
+ * ya que no es posible saber cuando responderá.
  * El asincronismo es evidente debido a la respuesta del server que es desconocida
  * Por tal el orden en que se pide no depende del orden que llega
 */

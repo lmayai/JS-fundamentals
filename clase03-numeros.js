@@ -9,15 +9,15 @@ var peso = 75;
 peso = peso - 2;
 peso -= 2;
 
-//EJm
+//Ejm
 var sandwich = 1;
 peso = peso + sandwich; //Suma
 var jugar = 3;
 peso -= jugar;
 
-//DEcimales
+//Decimales
 var precioVino = 200.3;
-var totalx3 = precioVino * 3; //600.9000000000001 -> LA menra de almacenar decimales no es precisa.
+var totalx3 = precioVino * 3; //600.9000000000001 -> La manera de almacenar decimales no es precisa.
     //Para corregir;
 var totalx3Correcto = Math.round( precioVino*3*100 ) /100; //
 

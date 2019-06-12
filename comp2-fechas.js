@@ -1,6 +1,6 @@
 /**
  * MANEJO DE FECHAS - ¿Hace cuántos nació?
- * Cualcular mi edad en días.Están en milisegundos
+ * Calcular mi edad en días. Están en milisegundos
 */
 
 // Dias ocurridos entre las fechas

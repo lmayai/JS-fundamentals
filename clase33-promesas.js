@@ -20,25 +20,25 @@
  */
 
 /**
- * EL problema de los callbaks es que el codigo se vuelve ilegible
- * DEbido a esto nacieron las promesas:
+ * El problema de los callbaks es que el código se vuelve ilegible
+ * Debido a esto nacieron las promesas:
  * Ahora la mayoria de los browser soportan las promesas. Se puede identificar si el navegador la soporta con pollyfind
- * LAS promesas se piensas como valores que aún no conocemos.
+ * Las promesas se piensas como valores que aún no conocemos.
  * Tienen 3 estados
  * 1. Pending
  * 2. Pasa a fullfild Si se resuelve
  * 3. Si falla pasa a reject.
- * PAra obtener el valor de la promesa se llama a .then(val => ...)
- * SI hay error pasa a .catch(err=>)
+ * Para obtener el valor de la promesa se llama a .then(val => ...)
+ * Si hay error pasa a .catch(err=>)
  * 
  * Luego de pasar al estado de fullfiled, se puede llamar a otra promesa
  * Para llamar a sucesivas acciones sucesivas
  */
 
 /**
- * Ahora se cambiara el metodo obtenerPersonaje para que retorne una promesa
- * en vez de recibir un callback como parametro.
- * Cuando se ejecute la funcion debida a la promesa, ahi se llamará
+ * Ahora se cambiará el método obtenerPersonaje para que retorne una promesa
+ * en vez de recibir un callback como parámetro.
+ * Cuando se ejecute la función debida a la promesa, ahi se llamará
  * al rejecto al resolve
  */
 
@@ -65,7 +65,7 @@ function onError (id){
 }
 
 /**
- * EL .then se llamara cuando la promesa se resuelva
+ * EL .then se llamará cuando la promesa se resuelva
  * por tal el personaje es la data enviada por el resolve
  * y el ID es el enviado por el reject
  */

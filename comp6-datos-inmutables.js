@@ -19,7 +19,7 @@ const cumple = person => person.edad++
 
 /**
  * Con lo siguiente se está creando un objeto en memoria
- * Por tal no se modificael original, sino una copia
+ * Por tal no se modifica el original, sino una copia
 */
 const cumpleInmutable = persona => ({
     ...persona, //SE DESGLOSAN EN UN NUEVO OBJETO

@@ -21,14 +21,14 @@ function obtenerPersonaje(id,callback){
 
 /**
  * Si se pasa de la siguiente manera, se va a llamar 
- * indemdiatamente obtenerPersonaje2.
+ * inmediatamente obtenerPersonaje2.
  * Incluso se llama primero la 2
  */
 //obtenerPersonaje(1, obtenerPersonaje(2) )
 
 /**
- * Debe llamarse es asi!
- * Ya que solo se llamara al finalizar la peticion, osea, con el callback
+ * Debe llamarse es así!
+ * Ya que solo se llamará al finalizar la peticion, osea, con el callback
  * Debe ser una fn que no se esté ejecutando
  */
 obtenerPersonaje(1,function (){

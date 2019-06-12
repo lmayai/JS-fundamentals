@@ -18,10 +18,10 @@
 /**
  * La recursividad se hace con:
  * Un caso base: cuando el dividendo es menor estricto que el divisor, se hace la resta hasta que no se pueda usar más. 
- * Un caso recursivom que es el que siempre se repite
+ * Un caso recursivo: que es el que siempre se repite
  */ 
 function divisionEntera(dividendo,divisor){
-    if (dividendo < divisor){ //Aqui se acaba la recursividad
+    if (dividendo < divisor){ //Aquí se acaba la recursividad
         return 0;
     }
     return 1 + divisionEntera(dividendo-divisor , divisor) //Se llama a la funcion recursivamente, pero ahora el dividendo cambia y es restado

@@ -1,7 +1,7 @@
 /**
- * CONTEXTOS; QUIEN ES ELL OBJETO THIS.
- * Error muy comun no saber quien es el this
- * COmO cambiar los contextos de las funciones
+ * CONTEXTOS; QUIEN ES EL OBJETO THIS.
+ * Error muy común no saber quien es el this
+ * Como cambiar los contextos de las funciones
 */
 
 const juan = {
@@ -11,20 +11,20 @@ const juan = {
 
 
 
-// En este casi this hace referencia la window
+// En este caso this hace referencia la window
 function saludar(){
-    console.log(`HOla mi nombre es ${this.nombre}`)
+    console.log(`Hola mi nombre es ${this.nombre}`)
 }
-saludar() //HOla mi nombre es undefined
+saludar() //Hola mi nombre es undefined
 
 /**
  * Como cambiar el this de la función.
  * USANDO BIND se cambia el contexto de la función
  * por tal se asignó el contexto a juan.    
- * bind devueve la funcion atandolo al this.
+ * bind devueve la función atandolo al this.
  */
 const saludarJuan = saludar.bind(juan) 
-saludarJuan() //HOla mi nombre es Juan
+saludarJuan() //Hola mi nombre es Juan
 
 
 const jessi = {
@@ -44,14 +44,14 @@ saludarJessi()
 setTimeout(saludar.bind(juan), 1000)
 
 function saludar2(saludo='Hola'){ //Por defecto Hola
-    console.log(`${saludo} mi nombrree es ${this.nombre}`)
+    console.log(`${saludo} mi nombre es ${this.nombre}`)
 }
 // Con el siguiente se muestra como se pasan parámetros con el bind
-//Primer parametro es this y los otros son de la fun.
+//Primer parámetro es this y los otros son de la función.
 setTimeout(saludar2.bind(juan,'Hola Che'), 1000)
 
 /**
- * BIND no ejecuta la funcion solo cambia el contexto
+ * BIND no ejecuta la función solo cambia el contexto
  */
 
 const pedro = {

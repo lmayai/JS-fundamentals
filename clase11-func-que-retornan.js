@@ -14,7 +14,7 @@ var juan={
     edad:13
 }
 
-//MAGIC_NUMBERy const ya que no cambiará
+// MAGIC_NUMBER y const ya que no cambiará
 // También usarlas en mayúsculas es una buena práctica
 const MAYORIA_DE_EDAD = 18; 
 

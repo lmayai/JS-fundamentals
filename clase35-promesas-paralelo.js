@@ -1,5 +1,5 @@
 /**
- * PAra gestionar las promesas múltiples en paralelo, 
+ * Para gestionar las promesas múltiples en paralelo, 
  * vamos a generar un array con múltiples promesas, cada elemento es 
  * una promesa
  */
@@ -34,7 +34,7 @@ var promesas = ids.map( function (id){
 } )
 */
 var promesas = ids.map( id => obtenerPersonaje(id))
-/** AL usar maps, para recorrer cada elemento
+/** Al usar maps, para recorrer cada elemento
  * En la consola se ve una rray de promesas
  *  (7) [Promise, Promise, Promise, Promise, Promise, Promise, Promise]
     0: Promise {<pending>}
@@ -50,7 +50,7 @@ var promesas = ids.map( id => obtenerPersonaje(id))
 /** Para obtenerlos valores 
  * con all se pasa un array de promesas
  * en el then se obtiene un arreglo de personajes.
- * Luego queda mucho mas legible ya que se llaman en paralelo
+ * Luego queda mucho más legible ya que se llaman en paralelo
 */
 Promise
     .all(promesas)

@@ -1,5 +1,5 @@
 /**
- * Para enterner el asincronismo, es vital entender que
+ * Para entender el asincronismo, es vital entender que
  * es posible enviar funciones como parámetros.
  * EJM: cada vez que saludamos, respondemos al saludo
  */
@@ -12,11 +12,11 @@ class Persona {
     }
 
     /**
-     * Alsaludar de la persona, vamos arecibir una fn
+     * Al saludar de la persona, vamos a recibir una fn
      */
     saludar(fn){
         console.log(`Hola me llamo ${this.nombre} ${this.apellido}`)
-        if (fn){ //Si nospasan una funcion como parametro, se llama
+        if (fn){ //Si nos pasan una función como parámetro, se llama
             fn(this.nombre,this.apellido,null) // En vez de null se puede enviar algo falso como FALSE
         }
     }
@@ -60,14 +60,14 @@ arturo.saludar(responderSaludo)
 
 
 /**
- * Los valores FALSOS de Js son
+ * Los valores FALSOS de Js son:
  * false
  * 0
  * null
  * ""
  * undefined
  * NaN
- * TOOODO los otro es true como
+ * TODO los otro es true como
  * []
  * {}
  * "cosa"

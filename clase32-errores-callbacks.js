@@ -11,7 +11,7 @@ const PEOPLE_URL = 'people/:id'
 const options ={ crossDomain:true }
 
 /**
- * EL metodo .fail() también tiene un callback si es que
+ * El metodo .fail() también tiene un callback si es que
  * hay un error en la petición. 
  * Si falla el personaje 3, falla y no se siguen ejecutando los otros
  * 

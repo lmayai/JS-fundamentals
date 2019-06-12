@@ -31,15 +31,15 @@ function onError (id) {
     console.log(`Error con el ID: ${id}`)
 }
 /**
- * El AWAIT hace que se detenga la ejecucion, hasta que todas
+ * El AWAIT hace que se detenga la ejecución, hasta que todas
  * las promesas sean resueltan.
- * Para usar await, la funciondebe marcarse como ASYNC
+ * Para usar await, la función debe marcarse como ASYNC
  */
 async function obtenerPersonajes(){
     var ids = [1,2,3,4,5,6,7]
     var promesas = ids.map( id => obtenerPersonaje(id))
     try {
-        //Se le asigna el valor de una tarea asincrona
+        //Se le asigna el valor de una tarea asíncrona
         var personajes = await Promise.all(promesas)
         console.table(personajes)
     }catch(id){

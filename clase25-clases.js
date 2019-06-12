@@ -1,15 +1,15 @@
 /**
  * APARTIR DEL 2015 salio el ECMASCRIPT2015
- * Este es el etandar en el que se basa JS para consolidarse como lenguaje
- * Este tiene las funcionalidad del lenguaje.
+ * Este es el estándar en el que se basa JS para consolidarse como lenguaje
+ * Este tiene las funcionalidades del lenguaje.
  * Agrega manera simples de resolver el codigo, como en el tema
  * de las clases y la herencia prototipal.
  * POR TAL SIGUEN SIENDO PROTITPOS
  */
 
 /**
- * RETOMANDO DE LA CLASE ANTERIOR, ahora se escribira asi
- * Existe una clase pesona, con un constructor definido
+ * RETOMANDO DE LA CLASE ANTERIOR, ahora se escribirá así
+ * Existe una clase persona, con un constructor definido
  */
 
 class Persona {
@@ -31,7 +31,7 @@ class Persona {
 
 /**
  * Ahora como se hace que se herede de otra
- * Con extends, se dice que la clase extiende de PErsona
+ * Con extends, se dice que la clase extiende de Persona
  * El error 
 clase25-clases.js:38 Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
     at new Desarrollador (clase25-clases.js:38)

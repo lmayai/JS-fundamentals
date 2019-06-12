@@ -24,12 +24,12 @@ var otro = {
 }
 
 console.log('PAra comparaciones de objetos');
-// AL comparar objetos no son como primitivos. Ya que JS pregunta por la referencia
+// Al comparar objetos no son como primitivos. Ya que JS pregunta por la referencia
 console.log('sacha==otro ',sacha==otro);  //FALSE
 console.log('sacha===otro ',sacha===otro); //FALSE
 
 /* Ahora si le asignamos a otraPersona la misma referencia de sacha
- * Si tendrian la misma referencia 
+ * Si tendrían la misma referencia 
 */
 var otraPersona = sacha;
 console.log('sacha==otraPersona ',sacha==otraPersona);  //TRUE, ya que son el mismo obj en la RAM
@@ -52,7 +52,7 @@ otraPersona.nombre = 'Pepe'
 console.log(sacha) //{nombre: "Pepe"}
 
 otraPersona2.nombre = 'Juancho'
-console.log(sacha) //{nombre: "Pepe"} nocambio a juancho, no apuntan al mismo
+console.log(sacha) //{nombre: "Pepe"} no cambió a juancho, no apuntan al mismo
 
 /*
 Boolean:  // false/true

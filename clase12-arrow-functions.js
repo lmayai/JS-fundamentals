@@ -17,23 +17,23 @@ var juan={
 const MAYORIA_DE_EDAD = 18; 
 
 // A una variable es posible asignarle una función
-// Ponerle const para definir que si es una funcion
+// Ponerle const para definir que si es una función
 const esMayorDeEdad = function (persona){
     return persona.edad >= MAYORIA_DE_EDAD;
 }
 
-//Tambien se puede con una arrow functions, igual a lo de arriba
+//También se puede con una arrow function, igual a lo de arriba
 //const esMayorDeEdad2 = (persona) => {
-//SI es un unico parametro se puede ahora rlos parentesis
+//Si es un único parámetro se puede ahorrar los paréntesis
 const esMayorDeEdad2 = persona => {
     return persona.edad >= MAYORIA_DE_EDAD;
 }
 
-//SI lo unico que hace la funcion es retornar, la anterior
-// funcion queda de la siguiente manera
+// Si lo único que hace la función es retornar, la anterior
+// función queda de la siguiente manera
 const esMayorDeEdad3 = persona => persona.edad >= MAYORIA_DE_EDAD;
 
-//tmabien como solo interesa la edad se puede desestructurar aun mas
+//También como solo interesa la edad se puede desestructurar aún más
 const esMayorDeEdad4 = ({edad}) => edad >= MAYORIA_DE_EDAD;
 
 function imprimirSiEsMayorDeEdad(persona){
@@ -57,8 +57,8 @@ permitirAcceso();
 
 
 
-/// RETOR ESCRIBIR ES MENOR DE EDAD COMO ARROW FUNCTION 
-// y retornar la negacion a la llamada es mayor de edad
+/// RETO: ESCRIBIR ES MENOR DE EDAD COMO ARROW FUNCTION 
+// y retornar la negación a la llamada es mayor de edad
 var esMenorDeEdad = persona => esMayorDeEdad4(persona);
 
 

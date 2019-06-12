@@ -8,7 +8,7 @@ function imprimirNombreEnMayusculas(nombre){
 
 imprimirNombreEnMayusculas(nombre1);
 imprimirNombreEnMayusculas(nombre2);
-// Si se tienen que imprimir muchos nombres tocaria crear muchos var nombre;
+// Si se tienen que imprimir muchos nombres tocaría crear muchos var nombre;
 
 /* Para no hacer esto se trabajan con objetos
  Las llaves definen y delimitan un OBJETO
@@ -39,7 +39,7 @@ function imprimirNombre(persona){
 imprimirNombre(dario)
 
 /** 
- * Para la nueva version de ES se permite definir el parametro que quiere recibirse de la funcion
+ * Para la nueva version de ES se permite definir el parámetro que quiere recibirse de la función
  * Usando las llaves y dentro la clave que se quiere
  * Se usa así ya que el que se quiere es el atributo nombre
 */
@@ -49,10 +49,10 @@ function imprimirNombre2({nombre}){
 
 imprimirNombre2(jaimito);
 
-/** Tambien se puede definir los objetos dentro del parametrod que se pasaran a una función */
+/** Tambien se puede definir los objetos dentro del parámetros que se pasarán a una función */
 imprimirNombre2( {nombre:'Gabo'} );
 
-/** Los siguientes llamados dan errores ya que no hay una definicion del objeto */
+/** Los siguientes llamados dan errores ya que no hay una definición del objeto */
 // imprimirNombre2(); Esto da error ya que no existe un objeto
 // imprimirNombre2({});
 // imprimirNombre2({apellido:'Perez'});

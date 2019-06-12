@@ -35,7 +35,7 @@ var santi = {
 
 
 /** Si se quisiera agrupar todos los anteiores 
- * objetods dentro de funciones.
+ * objetos dentro de funciones.
  * Se hace un array []
  */
 
@@ -49,7 +49,7 @@ var alturaJuan2 = personas[3]['altura']
 //Ahora para recorrer el array
 for(var i = 0; i<personas.length; i++) {
     console.log( `${personas[i].nombre} mide ${personas[i]['altura']} metros`)
-    /** Tamien se puede haer asi
+    /** Tamien se puede hacer así
      *  var persona = personas[i]
      *  console.log( `${persona[i].nombre} mide ${persona[i]['altura']} metros`)
     */ 

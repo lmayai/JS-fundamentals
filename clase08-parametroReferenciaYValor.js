@@ -19,7 +19,7 @@ function imprimirNombre(persona){
 imprimirNombre(dario);
 
 /** PASOS POR REFERENCIA O POR VALOR */
-// Al pasar el objeto persona, cada vez que se llame a cumple() la edad ira aumentando
+// Al pasar el objeto persona, cada vez que se llame a cumple() la edad irá aumentando
 function cumple(persona){
     persona.edad += 1;
 }
@@ -29,11 +29,11 @@ cumple(dario); //Edad: 26
 cumple(dario); //Edad: 27
 /**
  * ESto significa que los objetos que se pasan a una función 
- * y se cambian dentro de la función se ver'an modificadas dentro de esta.
+ * y se cambian dentro de la función se verán modificadas dentro de esta.
  * --- Los objetos se comportan diferentes
  */ 
 
-/** Para que no se alteren los parametros se hace lo siguiente
+/** Para que no se alteren los parámetros se hace lo siguiente
  * Se retorna un nuevo ejemplo
  */
 function cumple2(persona){
@@ -44,7 +44,7 @@ function cumple2(persona){
     persona.edad += 1;
 }
 
-// Por tal se retorna una persona mas vieja, pero no se altera el elemento
+// Por tal se retorna una persona más vieja, pero no se altera el elemento
 cumple2(dario);     //Retorna: {nombre: "Dario", apellido: "Diaz", edad: 28}
 console.log(dario)  //Retorna: {nombre: "Dario", apellido: "Diaz", edad: 27}
 
@@ -52,7 +52,7 @@ var darioMasViejo = cumple2(dario);
 console.log(darioMasViejo); //Retorna: {nombre: "Dario", apellido: "Diaz", edad: 28}
 console.log(dario);         //Retorna: {nombre: "Dario", apellido: "Diaz", edad: 27}
 
-/****** POr tal toca tener previsto si se quiere o no esos objetos pasadoscomo parametros. */
+/****** Por tal toca tener previsto si se quiere o no esos objetos pasados como parámetros. */
 
 
 

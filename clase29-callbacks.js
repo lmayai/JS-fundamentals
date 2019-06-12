@@ -2,7 +2,7 @@
  * CALLBACKS!
  * 
  * 1. Usar requests a una API externa usando JQUERY
- * 2. Las APIS van a STARWRAS
+ * 2. Las APIS van a STARWAS
  * 3. Se necesita descargar JQUERY, usarlo con un CDN(un content delivery network: servidor que tramitará el request)
  * AL escribir $ en la consola se ve que redirije a JQUERY
  * Se hacen peticiones a https://swapi.co/
@@ -16,7 +16,7 @@
  * Param1: URL
  * Param2: OBject { crossDomain:true}
  * Param3: callback- Se tiene funcion anonima.
- *  La anonima retorna o puede retornar un success, y se llama cuando se termine la peticion
+ *  La anónima retorna o puede retornar un success, y se llama cuando se termine la petición
  * jQuery.get( url [, data ] [, success ] [, dataType ] ) 
  * Con console.log(arguments) se ven los argumentos de retorno
  * Lo de adentro del callback solo se va a ejecutar si la petición es exitosa!
@@ -38,7 +38,7 @@ $.get(luke_url , options , function(persona,suc){
 })
 
 
-// USANDO UN METODO NO ANÓNIMO SERÍA ASÍ
+// USANDO UN MÉTODO NO ANÓNIMO SERÍA ASÍ
 const onPeopleResponse = function (persona){
     console.log(`FUN: Hola yo soy ${persona.name}`)
 }

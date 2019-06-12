@@ -3,7 +3,7 @@
  * Hay casos en que si debe usarse
 */
 
-//Innecesario, desues de una llave
+//Innecesario, despueś de una llave
 function a() {  
     for (let index = 0; index < array.length; index++) {
         const element = array[index];
@@ -20,7 +20,7 @@ console.log('HOla')
 const nombre='aaa'
 console.log('Hola J')
 //`${nombre} es un dev`
-//Tambien un error muy extraño diciendo que lod no es una funcion
+//También un error muy extraño diciendo que no es una funcion
 ;`${nombre} es un dev`
 
 
@@ -32,8 +32,8 @@ function calcDoble(n) {
         }
 }
 }*/
-// SI despuesdel de return encuentra un enter , lo toma como ;}
-// Por tal da error, deberia ser assí
+// SI después del de return encuentra un enter, lo toma como ;}
+// Por tal da error, debería ser así
 function calcDoble(n) {
     return {original:n,doble:n*2}
 }

@@ -10,7 +10,7 @@ function Persona(nombre,apellido,altura){
     this.altura =altura
 }
 
-// Aqui es donde se modifica el prototipo
+// Aquí es donde se modifica el prototipo
 Persona.prototype.saludar = function () {
     console.log(`Hola me llamo ${this.nombre} ${this.apellido}`)
 }
@@ -33,9 +33,9 @@ erika.soyAlto1()
 pedro.soyAlto1()
 
 /**
- * Al ejecutar esto se tendra un error, ya que importa donde se 
- * colque las funciones de los protos, por tal las funciones se poenen juntas
- * Por tal los proroipos se ponen arriba y no abajo.
+ * Al ejecutar esto se tendrá un error, ya que importa donde se 
+ * coloque las funciones de los protos, por tal las funciones se ponen juntas
+ * Por tal los prototipos se ponen arriba y no abajo.
  */
 Persona.prototype.soyAlto = function() {
     return this.altura >=1.8

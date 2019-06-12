@@ -1,6 +1,6 @@
 /**
- * Encadenar varias promesas como se hacia con los callback
- * y ver como queda mas limpio
+ * Encadenar varias promesas como se hacía con los callback
+ * y ver como queda más limpio
  */
 
 const API_URL = 'https://swapi.co/api/'
@@ -26,8 +26,8 @@ function onError (id) {
 }
 
 /**
- * AHora para que haya una promesa, esta se retorna.}
- * En el metodo then, vamos a devolver una promesa
+ * Ahora para que haya una promesa, esta se retorna.
+ * En el método then, vamos a devolver una promesa
  */
 obtenerPersonaje(1)
     .then( (personaje1) => {
@@ -61,5 +61,5 @@ obtenerPersonaje(1)
     //.catch(onError)
 
 /**
- * Las promesas se encadenan, y quda mucho más legible
+ * Las promesas se encadenan, y queda mucho más legible
  */

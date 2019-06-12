@@ -1,13 +1,13 @@
 /**
- * cUANDO SE HABLA DE OBJ EN JS SE HABLA MAS DE PROTOTIPOS QUE DE CLASES.
+ * CUANDO SE HABLA DE OBJ EN JS SE HABLA MAS DE PROTOTIPOS QUE DE CLASES.
  * Las clases terminan siendo prototipos
- * 1. primero se definira un protiipo
- * 2. el objeto se crea usando new, segun el prototipo
+ * 1. primero se definirá un protiipo
+ * 2. el objeto se crea usando new, según el prototipo
  * 3. this hace referencia al objeto que se acaba de construir
  * 4. Ese ojeto this que se crea no tiene atributos, por tal se llenan
  * 5. implicitamente se retorna el this
- * 6. Para implementar la funcion saludar, se le puede decir al prototipo
- *    DEntro del proto, existe un atributo saludar, que será una funcion   
+ * 6. Para implementar la función saludar, se le puede decir al prototipo
+ *    Dentro del proto, existe un atributo saludar, que será una función   
  */
 
 function Persona(nombre,apellido){
@@ -15,7 +15,7 @@ function Persona(nombre,apellido){
     this.nombre = nombre
     this.apellido =apellido
     this.edad = 20 //Todos los objetos persona dentran 20
-    //implicitamente se retorna el this return this.
+    //implícitamente se retorna el this return this.
 }
 
 Persona.prototype.saludar = function () {
@@ -29,14 +29,14 @@ Persona.prototype.saludar = function () {
 var sacha = new Persona('Sacha','Diaz')
 sacha.saludar()
 
-//CAda uno de estos guarda dentro de this esos valores
+//Cada uno de estos guarda dentro de this esos valores
 var erika = new Persona('Erika','Gomez')
 var pedro = new Persona('Pedro','Aguirre')
 
 //******************************************++ */
 /**
- * Sin usar new, se crea un objeto y se asigna a los atributos de un objetp
- * ESTO ESTA MAL ESCRITO, po mas que funcione
+ * Sin usar new, se crea un objeto y se asigna a los atributos de un objeto
+ * ESTO ESTA MAL ESCRITO, por mas que funcione
  */
 function Persona2(nombre,apellido){
     obj ={}
@@ -47,7 +47,7 @@ function Persona2(nombre,apellido){
 var sacha2 = Persona2('Sacha','Diaz')
 
 //RETO: Agregar el atributo altura dentro del constructor y 
-// agregar la funcion de decir si es alta o no, mas de 1.8 metros
+// agregar la función de decir si es alta o no, mas de 1.8 metros
 
 function Persona3(nombre,apellido,altura){
     this.nombre= nombre

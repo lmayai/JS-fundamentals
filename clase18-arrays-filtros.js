@@ -36,26 +36,26 @@ var santi = {
 var personas = [martin,karen,pedro,juan,santi];
 
 /** Vamos a filtrar
- * Para filtrar se necesita un array yuna condicion
- * que será una funcion
- * persona.filter(condicion que es una fn)
- * Donde filter hara un llamado a la funcion al iterarla
+ * Para filtrar se necesita un array y una condición
+ * que será una función
+ * persona.filter(condición que es una fn)
+ * Donde filter hará un llamado a la función al iterarla
  */
 
 esAlta = (persona) => persona.altura >=1.8
 esAlta2 = ({altura}) => altura >=1.8
 
 var personasAltas = personas.filter(esAlta2)
-// Ahora personasAltas es un array con la evaluacion
-// en el array de la condicion
+// Ahora personasAltas es un array con la evaluación
+// en el array de la condición
 
-/** En internet tambien se encuentra de la 
+/** En internet también se encuentra de la 
  * siguiente manera: 
- * No se llama a una funcion sino que se cre la funcion de una
- * Es mas prolijo la funcion por separado pero ambas funcionan
+ * No se llama a una función sino que se cre la función de una
+ * Es mas prolijo la función por separado pero ambas funcionan.
 */
 var personasBajas = personas.filter( function(persona){
     return persona.altura < 1.75
 })
 
-/// RETO: EScribir filtrado persona bajas: ARRIBA YA EStÁ
+/// RETO: EScribir filtrado persona bajas: ARRIBA YA ESTÁ

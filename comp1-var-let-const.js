@@ -1,5 +1,5 @@
 /**
- * DIferencias entre usar var, let y const
+ * Diferencias entre usar var, let y const
  */
 
 var sacha = {
@@ -11,7 +11,7 @@ var sacha = {
 /**
  * Cuando se declara con var dentro, es lo mismo que si se declara
  * var mensaje arriba del primer if - ASI NO DEBE HACERSE.
- * Pero JS se da cuenta que se está declarando la var asi no entre al IF
+ * Pero JS se da cuenta que se está declarando la var así no entre al IF
  */
 function esMayorDeEdad(persona){
     if (persona.edad>=18){
@@ -53,7 +53,7 @@ function esMayorDeEdad3(persona){
 }
 
 /**
- * DEBE HACERSE ASí!
+ * DEBE HACERSE ASÍ!
  */
 function esMayorDeEdad4(persona){
     let mensaje
@@ -116,7 +116,7 @@ for(let j=0;j<10;j++){
 /**
  * CONCLUSIONES:
  * Let, reduce el alcance de la variable al igual que const
- * Lo mejor es reducir siempre al minimo al alcance de la variable, usando let. 
- * Si no cambiaram, usar const.
- * REvisar bien el uso de var
+ * Lo mejor es reducir siempre al mínimo al alcance de la variable, usando let. 
+ * Si no cambiaran, usar const.
+ * Revisar bien el uso de var
  */

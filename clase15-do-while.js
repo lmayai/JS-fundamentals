@@ -2,14 +2,14 @@
  * El do-while se ejecuta al menos una vez
  */
 
- //EJM: cuantas veces sucede algo: contador
+ //EJM: cuántas veces sucede algo: contador
 
  var contador = 0
 
  const llueve = () => Math.random()<0.25
 
- //hacemos algo al menots una vez hasta q se cumpla una condicion
- //Si no lleuve se deja de ejecutar, 
+ //hacemos algo al menos una vez hasta que se cumpla una condición
+ //Si no llueve se deja de ejecutar
  do{
     contador++;
  }while(!llueve());

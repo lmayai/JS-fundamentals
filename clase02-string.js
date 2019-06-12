@@ -16,5 +16,5 @@ var nombreCompleto2= `${nombre} ${apellido.toUpperCase()}` //"Leo MAYA" //uso de
 var sub = nombre.charAt(1) + nombre.charAt(2);
 var sub2 = nombre.substr(1,2)  //Desde donde empiza y cuantos caracteres
 
-// RETO: Mostrar cual es la ultima letra del nombre
+// RETO: Mostrar cual es la última letra del nombre
 var ultimaLetra =  nombre.charAt(cantidadLetras-1);
