@@ -45,7 +45,7 @@ console.log('c');
 
 /** EL ORDEN FUE:
  * a , d , c, f, b ,e
- * Lo cual mostro que C aparecio primero que F,
+ * Lo cual mostró que C aparecio primero que F,
  * Esto es porque la funcion pasada como referencia esta en la 
  * cola de tareas. Se le dijo a JS que ejecute esta funcion, y 
  * la ponga en la lista. 

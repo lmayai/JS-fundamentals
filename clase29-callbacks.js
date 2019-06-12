@@ -14,11 +14,11 @@
  * Para hacer el request es necesario lo siguiente
  * Se llama a $.get para peticiones GET
  * Param1: URL
- * Param2: OBject { crossDamain:true}
+ * Param2: OBject { crossDomain:true}
  * Param3: callback- Se tiene funcion anonima.
  *  La anonima retorna o puede retornar un success, y se llama cuando se termine la peticion
  * jQuery.get( url [, data ] [, success ] [, dataType ] ) 
- * COn console.log(arguments) se ven los argumentos de retorno
+ * Con console.log(arguments) se ven los argumentos de retorno
  * Lo de adentro del callback solo se va a ejecutar si la petición es exitosa!
  * dentro de function(data,aditions) -> data se refiere a arguments[0] aditions a arguments[1]
  * 

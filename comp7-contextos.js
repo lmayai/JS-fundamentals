@@ -20,7 +20,7 @@ saludar() //HOla mi nombre es undefined
 /**
  * Como cambiar el this de la función.
  * USANDO BIND se cambia el contexto de la función
- * por tal se asignóel conexto a juan.
+ * por tal se asignó el contexto a juan.    
  * bind devueve la funcion atandolo al this.
  */
 const saludarJuan = saludar.bind(juan) 
@@ -33,7 +33,7 @@ const jessi = {
 }
 
 /**
- * Aspi se ata a otro
+ * Asi se ata a otro
  */
 const saludarJessi = saludar.bind(jessi) 
 saludarJessi()
@@ -46,7 +46,7 @@ setTimeout(saludar.bind(juan), 1000)
 function saludar2(saludo='Hola'){ //Por defecto Hola
     console.log(`${saludo} mi nombrree es ${this.nombre}`)
 }
-// Con el siguiente semuestra como se pasan parámetros con el bind
+// Con el siguiente se muestra como se pasan parámetros con el bind
 //Primer parametro es this y los otros son de la fun.
 setTimeout(saludar2.bind(juan,'Hola Che'), 1000)
 

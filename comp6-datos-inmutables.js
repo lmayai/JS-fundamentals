@@ -28,7 +28,7 @@ const cumpleInmutable = persona => ({
 
 /**
  * Se observa que el original no se modifica solo la copia.
- * La desventaja es que el objeto sedebio copiar
+ * La desventaja es que el objeto se debio copiar
  */
 juan21 = cumpleInmutable(juan)
 juan22 = cumpleInmutable(juan21)

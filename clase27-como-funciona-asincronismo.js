@@ -1,8 +1,8 @@
 /**
  * COmo funciona el asincronismo
- * 1. JS solo puedehacer una cosa a la vez, solo una tarea.
+ * 1. JS solo puede hacer una cosa a la vez, solo una tarea.
  * A pesar que solohace una tarea a la vez, no es multitarea,
- * puede delegar funciones a diferentes proces
+ * puede delegar funciones a diferentes process
  * Este modelo de concurrencia se llama EVENT LOOP
  * 
  * 2. La pila de ejecucion call stack va agrupando
@@ -12,10 +12,10 @@
  * luego que sse termina de ejecutar, saca la tarea de la pila y la bota
  * 
  * 4. EN algun momento de nuestro programa queremos obtener informacion,
- * existe infoque no esinmediata, portal se tiene que espear una respues. 
+ * existe info que no es inmediata, portal se tiene que espear una respues. 
  * Cuando la repuesta este lista, se ejecutara algo mas.
- * 
- * 5.Eso que se llama luego que se ejecuta una tarea, se llama callback 
+ *  
+ * 5. Eso que se llama luego que se ejecuta una tarea, se llama callback 
  * y mientras tanto Js seguira ejecutando el programa ppal.
  * 
  * 6. Luego que llegue la respuesta, la funcion a ejecutar paro a otro lado.

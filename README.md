@@ -777,11 +777,568 @@ var totaAlturas = personas.reduce( (acum,persona)=> acum + persona.altura , 0)
 ```
 
 ## Prototipos
+En JS se habla es de prototipos y no de clases. Los prototipos es el mecanismo en el cual los objetos de js heredan caracterisiticas entre si. Los protos funcionan como una plantilla desde la que el objeto hereda propiedades y métodos.
+- Pensemos el proto inicialmente como una función.
+```js
+function Persona(nombre, apellido){
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.edad = 20;
+}
+```
+Donde *this* se refiere al objeto que se acaba de construir dentro del proto, el cual está vacio y debe llenarse. Implicitamente siempre se retorna el objeto this. This también se puede entender como el objeto actual en el que se está escribiendo el código.
+- Toda función tiene una propiedad llamada prototype  predeterminada.
+```js
+// En el inspector
+Persona.prototype
+{constructor: ƒ}
+    constructor: ƒ Persona(nombre, apellido)
+    __proto__: Object
+```
+- Es posible añadirle propiedades al prototipo de una función, de este modo
+```js
+Persona.prototype.saludar = function(){
+    console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
+}
+```
+Si se revisa nuevamente el prototipo se tendría una propiedad nueva:
+```js
+// En el inspector
+Persona.protoype
+{saludar: ƒ, constructor: ƒ}
+    saludar: ƒ ()
+    constructor: ƒ Persona(nombre, apellido)
+    __proto__: Object
+```
+
+- Para  crear objetos basados en prototipos se usa la palabra **new**, lo cual crea una instancia de la función.
+```js
+var persona1 = new Persona('Juan','Gomez')
+var persona2 = new Persona('Pedro','Perez')
+
+persona1.saludar() //Hola, me llamo Juan Gomez
+```
+
+- Luego al objeto creado a partir de un prototipo, también se le puede añadir propiedades a su prototipo, así:
+```js
+persona1.saludar = function(){console.log(`Hi, my name is ${this.nombre}`)}
+```
+EL objeto tendría un método llamado *saludar*. También ese método hace parte de su prototipo, donde hace otra cosa.
+```js
+// En el inspector
+persona1
+Persona {nombre: "Juan", apellido: "Gomez", edad: 20, saludar: ƒ}
+    apellido: "Gomez"
+    edad: 20
+    nombre: "Juan"
+    saludar: ƒ ()
+    __proto__:
+        saludar: ƒ ()
+        constructor: ƒ Persona(nombre, apellido)
+        __proto__: Object
+```
+### This
+
+- Para entender el parámetro this, se puede hacer lo siguiente, donde en el constructor del prototipo se crea un objeto vacío y luego se retorna.
+```js
+function Persona2(nombre, apellido){
+    obj = {};
+    obj.nombre = nombre;
+    obj.apellido = apellido;
+    return obj;
+}
+var p3 = new Persona2('Karen','Isaza');
+```
+Nota: A pesar que es funcional lo anterior, no es una práctica correcta en la codificación.
+
+### Modificando prototipos 
+Si se tiene la misma función Persona y se le quiere agregar una propiedad sería así:
+```js
+function Persona(nombre,apellido,altura){
+    this.nombre = nombre;
+    this.apellido =apellido;
+    this.altura =altura;
+}
+
+Persona.prototype.soyAlto1 = function (){
+    return this.altura >= 1.8;
+}
+```
+- Qué pasa si se escribiera como una arrow function?
+```js
+Persona.prototype.soyAlto2 = () => this.altura >= 1.8;
+```
+Lo anterior tiene un problema que se verá acontinuación:
+```js
+var erika = new Persona('Erika','Gomez',1.85);
+console.log(erika.soyAlto1()); //TRUE
+console.log(erika.soyAlto2()); //FALSE
+```
+La escrita con arrow function tiene un problema con el objeto this, ya que las arrow-functions cambian el contexto.
+
+### El contexto de this.
+Digamos que se va a escribir una propiedad del prototipo así con una arrow-function
+```js
+Persona.prototype.saludar =  ()  => {
+    console.log(`Hola me llamo ${this.nombre} ${this.apellido}`);
+}
+erika.saludar(); //Hola me llamo undefined undefined
+```
+El objeto *this* si se usa las arrow-function ahora apunta a *window*. Las arrow function cambian el contexto.
+
+### Herencia en Js
+JS no soporta herencia porque no soporta el concepto de clases de los otros lenguajes, pero existe la herencia prototipal. 
+Esto significa que si un objeto hijo no responde a un método, irá a su prototipo superior y lo buscará ahí, subiendo en la cadena de los objetos padres hasta llegar al objetivo superior *Object*.
+- Para que un prototipo herede de otro, se puede codificar lo siguiente:
+```js
+function heredaDe(protoHijo,protoPadre){
+    var fn = function(){}
+    fn.prototype = protoPadre.prototype;
+    protoHijo.prototype = new fn;
+    protoHijo.prototype.constructor = protoHijo;
+}
+```
+- Ahora si se crea un nuevo tipo de persona, que herede de persona, este heredara todos los prototipos de su padre con el método *heredeDe()* sería así:
+```js
+function Persona(nombre,altura){
+    this.nombre = nombre;
+    this.altura = altura
+}
+Persona.prototype.saludar =  function () {
+    console.log(`Hola me llamo ${this.nombre}`);
+}
+Persona.prototype.soyAlto = function () {
+    return this.altura >=1.8
+}
+function Desarrollador(nombre){
+    this.nombre = nombre;
+}
+heredaDe(Desarrollador, Persona);
+Desarrollador.prototype.saludar = function (){
+    console.log(`Hola soy desarrollador y me llamo ${this.nombre}`)
+}
+var pedro = new Persona('Pedro',1.8)
+var erika = new Desarrollador('Erika')
+```
+el objeto erika si saluda buscará en su prototipo, pero si el objeto erika quiera saber si es alto, primero busca en su prototipo y luego buscará en su proto padre. Por tal siempre buscará un método en sus protitpos padres.
+
+### Concepto de clases en JS
+Luego de entender el concepto de herencia prototipal, y para mejorar la codificación, se agrega desde ECMASCRIPT2015 las clases. Ahora para definir un prototipo y luego definir sus atributos sería así:
+```js
+class Persona {
+    constructor(nombre,altura){
+        this.nombre = nombre;
+        this.altura = altura;
+    }
+    saludar(){
+        console.log(`Hola me llamo ${this.nombre}`);
+    }
+    soyAlto(){
+        return this.altura >=1.8
+    }
+}
+```
+- Para heredar se usa la palabra **extends**
+```js
+class Desarrollador extends Persona {
+    constructor(nombre,altura){
+        super(nombre,altura)
+    }
+    saludar(){
+        console.log(`Hola soy desarrollador y me llamo ${this.nombre}`)
+    }
+}
+```
+Los valores falsos de JS son:
+ * false
+ * 0
+ * null
+ * ""
+ * undefined
+ * NaN
+
+### Cadena de prototipos resultante
+- Para métodos
+```js
+var a = {a:1};
+// Solo tiene las props. de Object
+// a --> Object.prototype --> null
+```
+- Para arreglos
+```js
+var a = ['cosa','thing'];
+// Tiene métodos como indexOf, forEach , ...
+// a --> Array.prototype --> Object.prototype --> null
+```
+- Para funciones:
+```js
+function f(){
+    return 0;
+}
+// Tiene métodos como bind(), call()
+// a --> Function.prototype --> Object.prototype --> null
+```
+
+#### Uso de create
+Con create es posible heredar también, donde se crea un objeto *b* a partir de uno *a*, y luego *b* hereda el prototype de *a* 
+```js
+var a = {a:1};
+//  a --> Object.prototype --> null
+
+var b = Object.create(a);
+//  b --> a --> Object.prototype --> null
+
+var c = Object.create(b);
+//  c --> b --> a --> Object.prototype --> null
+```
+
+## Asíncronismo
+1. Js solo tiene un hilo de ejecución, osea, solo puede realizar una tarea a la vez. Funciona bajo un modelo de concurrencia llamado event loop.
+2. Se van ejecutando las tareas tareas, enuna pila de ejecición, call stack.
+3. Si una función llama a otra, esta va a la pila y espera que se ejecuten otras para ser llamadas.
+4.  Hay información que no se obtiene inmediatamente, a veces se tiene que esperar una respuesta y luego ejecutar algo.
+5. Cuando se espera algo y se quiere hacer algo con esa respuesta, se llama a un callback. El callback es una función que se llama al terminar un evento asíncrono.
+6. Cuando llega la respuesta, ahora se dirije a la cola de tareas a verificar.
+7. Las tareas que deben esperarse son peticiones a servidores,interacciones visuales, etc.
+8. Al terminar las tareas principales va a la cola de tareas, las cuales son esos callbacks.
+9. Siempre es importante pensar en no bloquear el event loop.
 
 
+## Timepos en JS
+Cualquier tarea que se delegue por un callback siempre esperará que se ejecuten todas las tareas principales.
+```js
+console.log('a');
+setTimeout(function () {
+    console.log('b');
+}, 0)
+console.log('c');
+// Se imprime
+// a - c - b 
+```
+
+## Callbacks
+Los callbacks son los métodos pasados como parámetros de una función, los cuales se ejecutaran luego de completarse las tareas principales.
+- Al tomar una petición de tipo get usando Jquery se tiene lo siguiente:
+```js
+const API_URL = 'https://swapi.co/api/';
+const PEOPLE_URL = 'people/:id';
+const onPeopleResponse = function (persona){
+    console.log(`FUN: Hola yo soy ${persona.name}`);
+}
+function obtenerPersonaje(id){
+    const url = `${API_URL}${PEOPLE_URL.replace(':id',id)}`;
+    $.get(url , options , onPeopleResponse);
+}
+obtenerPersonaje(1);
+```
+El método obtenerPersonaje() se ejecuta como una tarea prinicipal, en la cuál se hace una petición tipo get a una URL especifica. La respuesta de esa petición no es intantánea, por tal la función onPeopleResponse es el callback que se ejecutará cuando responda la petición. 
+Esto funciona como código asíncrono el cual no es bloqueante, ya que la tarea principal delega sus funciones a otras.
+https://developer.mozilla.org/es/docs/Web/JavaScript/EventLoop
+
+- En caso que se llamen varias peticiones seguidas nada garantiza que la respuesta sea secuencial, osea, es posble obtener primero el 3, luego 2 y luego 1; el orden no se puede asegurar.
+```js
+obtenerPersonaje(1);
+obtenerPersonaje(2);
+obtenerPersonaje(3);
+```
+
+### Orden en peticiones
+Para garantizar el orden de llegada lo que se debe hacer es no enviar las peticiones por separado, sino, que cuando se llame el callback de la primera petición, este callback llame a otro callback, y el útimo llame a otro... Son llamadas sucesivas que pueden codificarse así:
+```js
+obtenerPersona(id, callback){
+    const url = `${API_URL}${PEOPLE_URL.replace(':id',id)}`
+    $.get(url , options , function (persona){  
+        console.log(`FUN: Hola yo soy ${persona.name}`); 
+        if (callback){
+            callback()
+        }
+    }
+}
+
+obtenerPersonaje(1, function(){
+    obtenerPersonaje( 2, function(){
+        obtenerPersonaje(3)
+    });
+});
+```
+A pesar que garantiza el orden, esto tiene un problema y es su lectura, en donde imaginarse 20 callbacks hace un código inmantenible. Esto se conoce como el callback-hell o infierno del callback.
+
+### Manejo de errores en las peticiones
+En caso que se haga una petición que falle, es importante manejar los errores, para esto se usa el método fail() en la petición de jquery
+```js
+function obtenerPersonaje(id,callback){
+    const url = `${API_URL}${PEOPLE_URL.replace(':id',id)}`
+    $
+     .get(url , options , callback)
+     .fail(() => {
+        console.log('No se pudo obtener el personaje' ,id)
+     }) 
+}
+```
+
+## Promesas
+Las promesas nacen de la necesidad de mejorar la codificación y el manejo del asincronismo en Js, para lograr que el código se vea más secuencial.
+```js
+algoAsincronico()
+    .then(actualizarAlgo)
+    .then(guardaralgo)
+```
+- Las promesas se crean así:
+```js
+new Promise( function(resolve,rejected){
+    if (todoOK){
+        resolve();
+    }else{
+        rejected();
+    }
+    //Se invoca resolve() para resolver la promesa
+    //Se invoca rejected() para generar un error
+})
+  .then();
+  .catch();
+```
+Las promesas tienen 3 estados: pending(pendiente), Fullfilled(cumplida), rejected(rechazada) y settled(finalizada).
+1. Cuando una promesa se crea se pone en estado de pending.
+2. Cuando se resuelve puede pasar a fullfilled o rejected.
+3. Luego según lo que resolvió se verifica el .then() o el .catch() de la promesa
+
+- Pensando en el objeto ya trabajado de obtener personaje se va a cambiar a un implementación con promesas.
+```js
+function obtenerPersonajes(id){
+    return new Promise( function(good,bad){ // El nombre no es importante    
+                                            // good=resolve y bad=rejected
+       const url = `${API_URL}${PEOPLE_URL.replace(':id',id)}`;
+       $
+        .get(url , options , (data)=>{
+            good(data); //Data tiene lo que devuelve la petición
+        })
+        .fail(() => {
+            bad(id);
+        }) 
+    } );   
+}
+```
+- Luego de que se crea un método que retorna el valor de una promesa, se puede verificar al invocar el método lo que resolvio la promesa con el .then() y el .catch()
+```js
+obtenerPersonajes(1)
+    .then((personaje)=>{
+        console.log(`EL persona es: ${personaje.name}`) //Se recibe en la petición un objeto que contiene una propiedad name    
+    })
+    .catch((id)=>{
+        console.log('Fallo al verificar el id:',id)
+    })
+```
+
+### Promesas encadenadas
+Para encadenar las promesas lo que se hace es usar el parámetro .then() cuando una petición retorne, en el manejo de la promesa se hará una nueva petición la cual retornará una promesa también. Las nuevas promesas se verán así:
+```js
+obtenerPersonajes(1)
+    .then((personaje1)=>{
+        console.log(`EL persona es: ${personaje1.name}`) 
+        return obtenerPersonaje(2)
+    })
+    .then((personaje2)=>{
+        console.log(`EL persona es: ${personaje2.name}`) 
+        return obtenerPersonaje(2)
+    })
+    .then((personaje3)=>{
+        console.log(`EL persona es: ${personaje3.name}`) 
+    })
+    .catch( id => console.log('Error en:',id))
+```
+
+### Promesas en paralelo
+Para controlar promesas en paralelo, se creara un arreglo de promesas y luego se verificará que todas estén resueltas.
+```js
+var ids = [1,2,3];
+var promesas = id.map( id => obtenerPersonaje(id)); // Arreglo de promesas
+```
+El arreglo promesas verificado en el inspector se ve así:
+```
+(3) [Promise, Promise, Promise, Promise, Promise, Promise, Promise]
+    0: Promise {<pending>}
+    1: Promise {<pending>}
+    2: Promise {<pending>}
+        lenght:3
+```
+- Luego para obtener las respuestas y valores de las promesas se usa Promise.all()
+```js
+Promise
+    .all(promesas)
+    .then(personajes => console.log(personajes))
+    .catch(id => console.log('Error en:',id))
+```
+En consola se ve lo siguiente:
+```
+0: {name: "Luke Skywalker", height: "172", mass: "77", …}
+1: {name: "C-3PO", height: "167", mass: "75",  …}
+2: {name: "R2-D2", height: "96", mass: "32",  …}
+```
+
+## Async/await
+Este permite la manera más simple de manejar peticiones asíncronas. Await permite detener la ejecución del programa hasta que la promesa sea resuelta. Si se quiere esperar la respuesta de una promesa, el método debe nombrarse con el async.
+- La función obtenerPersonaje sería asi:
+```js
+async function obtenerLosPersonajes(){
+    var ids = [1,2,3];
+    var promesas = id.map( id => obtenerPersonaje(id));
+    try{
+        var personajes = await Promise.all(promesas)
+        console.log(personajes);
+    }catch(id){
+        console.log('Error en:',id);
+    }
+}
+obtenerLosPersonajes();
+```
+Await hace que se detenga la ejecucion, si se usa await, la función debe marcarse como async.
+
+## Var let y const
+Se recomienda siempre usar *let* o *const* y nunca *var*. *var* a pesar de declararse en un espacio local se puede alcanzar en el global. Esto no permite tener un control claro de las variables, los nombres designados y el nombre y el alcance(scope)
+- *let* permite ser modificada
+- *const* no permite ser modificada
+
+Un arreglo con const no puede ser redeclarado, pero si pueden manejarse sus atributos.
+```js
+const a = [1,2,3]
+a.push(4) //[1, 2, 3, 4]
+a.pop()   //[1, 2, 3]
+```
+
+## Fechas
+Para las fechas se usa el prototipo de Date()
+```js
+const hoy = new Date() // Fecha actual por defecto
+const nacimiento = new Date(1990,7,12) //Fecha definible
+```
+
+## Recursividad en JS
+Es una técnica en programación que permite que un bloque de instrucciones se ejecute un cierto número de veces.
+- Para la recursividad se usa un caso base(el límite) y un caso recursivo(la operación que se repite)
+- Digamos que se quieren dividir 2 números (13/4): La división es la cantidad de veces que se puede restar el mismo número sobre otros, es decir
+```
+13 - 4 = 9   Va 1
+ 9 - 4 = 5   Van 2
+ 5 - 4 = 1   Van 3
+ 1 - 3 = -3  Ya no cuenta
+```
+Para lograr la recursividad se tiene un divisor(4) y un dividendo(13).
+```js
+function dividir(dividendo,divisor){
+    if (dividendo < divisor){
+        return 0; //Ya no se puede restar mas veces
+    }
+    return 1 + dividir(dividendo-divisor,divisor);
+    // Se llama a la funcion recursivamente,
+    // pero ahora el dividendo cambia y es restado
+}
+dividir(13,4); //Retorna el resultado
+```
+En el proceso se llamará la misma función cuantas veces sea necesaria hasta que el valor del dividendo sea menor al del divisor. 
+- El factorial con recursividad
+```
+4!  = 4 * 3 * 2 * 1 = 24 
+4 * (4-1) van 12 
+3 * (3-1) van 
+```
+```js
+function factorial(number){
+    if (number < 1){
+       return 1; 
+    }
+    return number*factorial(number-1)
+}
+factorial(4);
+```
+
+## Memoización
+La memoización es una técnica que permite guardar en cache valores que no necesariamente debe ser calculados nuevamente. Tomando como ejemplo el factorial.
+```
+El factorial puede definirse como el calculo de diferentes factial, es decir:
+4! = 4 * 3!
+```
+Eso quiere decir que si podemos guardar en cache el valor de 3!, ya no es necesario recalcularlo.
+- Para guardar en cache sería modificar el cálculo del factorial así:
+```js
+function factorial(number){
+    if(!this.cache) {
+        this.cache = {}
+    }
+    if (this.cache[numero]){
+        return 1;
+    }
+    if (number === 1){
+       return 1; 
+    }
+    this.cache[number] =  number*factorial(number-1);
+    return this.cache[number];
+}
+factorial(4);
+```
+
+## Closures
+Los closures son funciones que pueden recordar el estado de las cosas al ser incovadas.
+```js
+function crearSaludo(finalDeFrase){
+    return function (nombre){ //anonima
+        console.log(`Hola ${nombre} ${finalDeFrase}`)
+    }
+}
+```
+Imaginarse que se tiene una función que crea un saludo. La función retorna una función la cual va a almacenar el final de una frase.
+```js
+const saludoArgentino = crearSaludo('che')
+const saludoMexicano = crearSaludo('carnal')
+```
+A dos variables se les asigna la función crear saludo, en la cual ya tiene almacena la final de la frase. La función en si recibirá un parámetro que es un nombre.
+```js
+saludoArgentino('Sacha')    // Hola Sacha che
+saludoMexicano('Juan')      // Hola Juan carnal
+```
+Se observa que el retorno de saludoArgentino es *Hola Sacha che*, Donde se pas+o como parámetro el Sacha, y el internamente ya tenía almacenano el che.
+
+## DAtos inmutables
+Los datos inmutables son aquellos que no cambian. Las funciones se deben garantizar que no cambien ni tengan efectos de lado, side effects.
+```js
+// Cambia el original
+const cumple = person => person.edad++;
+
+// No cambia el original
+const cumpleInmutable = persona => {
+    ...persona,
+    edad:persona.edad+1;
+}
+```
+Con lo anterior se garantiza que el objeto que llegué no será alterado. Los 3 puntos significa que se creara un nuevo objeto basado en el recibido.
+
+## Contextos
+EL contexto de this puede traer inconvenientes si no se sabe manejar.
+```js
+// this: hace referencia a window= el objeto global
+function saludar(){
+    console.log(`HOla mi nombre es ${this.nombre}`);
+}
+saludar(); //"Hola mi nombre es undefined"
+```
+- Es posible cambiar el contexto de this de una función usando el metodo bind()
+```js
+const jessi = {
+    nombre : 'Jessi',
+    apellido: 'Peréz',
+}
+
+const saludar = saludar.bind(jessi);
+saludar();  //"Hola mi nombre es Jessi"
+```
+Bind recibe el nuevo contexto que se asignará dentro de la función.
+- Con bind también se puede pasar los parametros de una función al invocarla. El primer parámetro que recibe es el contexto y lo otro son los parámetros propios de la función.
+```js
+function saludar(saludo='Hola'){ //Por defecto Hola
+    console.log(`${saludo} mi nombree es ${this.nombre}`);
+}
+const saludo = saludar2.bind(jessi,'Hola Che');
+saludo(); //"Hola Che! mi nombree es Jessi"
+```
 ```js```
 ```js```
-```js```
-```js```
-```js```
-```js```
+
