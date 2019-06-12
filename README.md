@@ -1174,6 +1174,18 @@ En consola se ve lo siguiente:
 ```
 
 ## Async/await
+https://developers.google.com/web/fundamentals/primers/async-functions
+```js
+async function asyncFunction() {
+  try {
+    const valorCompletado = await promesa;
+  }
+  catch (valorRechazado) {
+    // …
+  }
+}
+```
+
 Este permite la manera más simple de manejar peticiones asíncronas. Await permite detener la ejecución del programa hasta que la promesa sea resuelta. Si se quiere esperar la respuesta de una promesa, el método debe nombrarse con el async.
 - La función obtenerPersonaje sería asi:
 ```js
